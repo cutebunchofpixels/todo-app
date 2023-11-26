@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "start": "docker compose --env-file=.env up -d",
-    "start:build": "docker compose --env-file=.env up --build -d"
+    "start:build": "docker compose --env-file=.env up --build -d",
+    "stop": "docker compose --env-file=.env down"
   },
   "keywords": [],
   "author": "",

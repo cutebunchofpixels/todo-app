@@ -8,4 +8,4 @@ RUN npm install
 COPY . .
 
 EXPOSE ${BACKEND_PORT}
-CMD ["node", "./dist/src/main.js"]
+CMD ["npm", "run", "start:dev"]
