@@ -1,0 +1,12 @@
+{
+  "name": "notes-app",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "docker compose --env-file=.env up -d",
+    "start:build": "docker compose --env-file=.env up --build -d"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
