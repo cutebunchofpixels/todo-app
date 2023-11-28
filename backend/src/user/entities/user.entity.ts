@@ -1,5 +1,6 @@
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, OneToMany } from 'typeorm';
 import { BaseEntity } from '../../common/base-entity.entity';
+import { Note } from 'src/notes/entities/note.entity';
 
 @Entity()
 export class User extends BaseEntity {
@@ -14,4 +15,7 @@ export class User extends BaseEntity {
 
   @Column({ nullable: true })
   refreshTokenHash: string;
+
+  @OneToMany(() => Note, (note) => note.user)
+  notes: Note[];
 }

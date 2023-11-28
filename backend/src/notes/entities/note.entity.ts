@@ -1,5 +1,6 @@
-import { Column, CreateDateColumn, Entity } from 'typeorm';
+import { Column, CreateDateColumn, Entity, ManyToOne } from 'typeorm';
 import { BaseEntity } from '../../common/base-entity.entity';
+import { User } from 'src/user/entities/user.entity';
 
 @Entity()
 export class Note extends BaseEntity {
@@ -17,4 +18,10 @@ export class Note extends BaseEntity {
 
   @Column()
   priority: number;
+
+  @Column()
+  userId: number;
+
+  @ManyToOne(() => User, (user) => user.notes)
+  user: User;
 }

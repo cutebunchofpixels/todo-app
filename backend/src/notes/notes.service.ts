@@ -25,16 +25,19 @@ export class NotesService {
 
   async getAllFiltered(
     filters: NoteFiltersDto,
+    userId: number,
   ): Promise<PaginationResponse<Note>> {
     const [notes] = await this.notesRepo.findAndCount({
       where: [
         {
           name: Like(`%${filters.text ?? ''}%`),
           done: filters.done,
+          userId,
         },
         {
           content: Like(`%${filters.text ?? ''}%`),
           done: filters.done,
+          userId,
         },
       ],
       take: filters.take,
@@ -52,8 +55,8 @@ export class NotesService {
     };
   }
 
-  async create(dto: CreateNoteDto): Promise<Note> {
-    const note = this.notesRepo.create(dto);
+  async create(dto: CreateNoteDto, userId: number): Promise<Note> {
+    const note = this.notesRepo.create({ ...dto, userId });
     return this.notesRepo.save(note);
   }
 
