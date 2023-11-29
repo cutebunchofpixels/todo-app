@@ -1,14 +1,18 @@
 import { ReactNode } from "react";
 
+export interface ModalProps {
+    isOpen: boolean;
+    onModalClose: () => void;
+    children: ReactNode;
+    title: string;
+}
+
 export default function Modal({
     isOpen,
     onModalClose,
     children,
-}: {
-    isOpen: boolean;
-    onModalClose: () => void;
-    children: ReactNode;
-}) {
+    title,
+}: ModalProps) {
     if (!isOpen) {
         return null;
     }
@@ -22,6 +26,7 @@ export default function Modal({
                 className="bg-white p-12 rounded"
                 onClick={(e) => e.stopPropagation()}
             >
+                <h2 className="text-2xl font-semibold mb-4">{title}</h2>
                 {children}
             </div>
         </div>
