@@ -1,4 +1,8 @@
-import { ForbiddenException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  ForbiddenException,
+  Injectable,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
@@ -18,6 +22,12 @@ export class AuthService {
   ) {}
 
   async signup(dto: SignupDto): Promise<AuthResponseDto> {
+    const existingUser = await this.userRepo.findOneBy({ email: dto.email });
+
+    if (existingUser) {
+      throw new BadRequestException('User with such email already exists');
+    }
+
     const user = this.userRepo.create(dto);
     const savedUser = await this.userRepo.save({
       ...user,
