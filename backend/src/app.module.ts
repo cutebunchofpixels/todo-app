@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { NotesModule } from './notes/notes.module';
+import { TodoModule } from './todos/todo.module';
 import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
-    NotesModule,
+    TodoModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: process.env.DB_HOST,

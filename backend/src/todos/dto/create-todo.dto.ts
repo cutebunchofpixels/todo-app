@@ -1,10 +1,6 @@
 import { IsNotEmpty, IsNumber, IsString, Max, Min } from 'class-validator';
 
-export class CreateNoteDto {
-  @IsString()
-  @IsNotEmpty()
-  name: string;
-
+export class CreateTodoDto {
   @IsNotEmpty()
   @IsString()
   content: string;

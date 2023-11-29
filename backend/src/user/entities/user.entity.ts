@@ -1,6 +1,6 @@
 import { Column, Entity, OneToMany } from 'typeorm';
 import { BaseEntity } from '../../common/base-entity.entity';
-import { Note } from 'src/notes/entities/note.entity';
+import { Todo } from 'src/todos/entities/todo.entity';
 
 @Entity()
 export class User extends BaseEntity {
@@ -16,6 +16,6 @@ export class User extends BaseEntity {
   @Column({ nullable: true })
   refreshTokenHash: string;
 
-  @OneToMany(() => Note, (note) => note.user)
-  notes: Note[];
+  @OneToMany(() => Todo, (todo) => todo.user)
+  todos: Todo[];
 }

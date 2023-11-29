@@ -1,8 +1,8 @@
 import { PartialType } from '@nestjs/mapped-types';
-import { CreateNoteDto } from './create-note.dto';
+import { CreateTodoDto } from './create-todo.dto';
 import { IsBoolean, IsOptional } from 'class-validator';
 
-export class UpdateNoteDto extends PartialType(CreateNoteDto) {
+export class UpdateTodoDto extends PartialType(CreateTodoDto) {
   @IsBoolean()
   @IsOptional()
   done?: boolean;

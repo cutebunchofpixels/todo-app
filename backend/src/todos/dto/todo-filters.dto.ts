@@ -11,10 +11,10 @@ import { OneOf } from 'src/common/validation/one-of';
 const orderProps = ['priority'];
 const orderDirections = ['ASC', 'DESC'];
 
-export class NoteFiltersDto {
+export class TodoFiltersDto {
   @IsOptional()
   @IsString()
-  text?: string;
+  content?: string;
 
   @Type(() => Boolean)
   @IsOptional()

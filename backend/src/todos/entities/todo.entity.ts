@@ -1,15 +1,9 @@
-import { Column, CreateDateColumn, Entity, ManyToOne } from 'typeorm';
+import { Column, Entity, ManyToOne } from 'typeorm';
 import { BaseEntity } from '../../common/base-entity.entity';
 import { User } from 'src/user/entities/user.entity';
 
 @Entity()
-export class Note extends BaseEntity {
-  @Column()
-  name: string;
-
-  @CreateDateColumn()
-  creationDate: Date;
-
+export class Todo extends BaseEntity {
   @Column()
   content: string;
 
@@ -22,6 +16,6 @@ export class Note extends BaseEntity {
   @Column()
   userId: number;
 
-  @ManyToOne(() => User, (user) => user.notes)
+  @ManyToOne(() => User, (user) => user.todos)
   user: User;
 }

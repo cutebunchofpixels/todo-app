@@ -13,6 +13,7 @@ async function bootstrap() {
     }),
   );
   app.use(cookieParser());
+  app.enableCors({ credentials: true, origin: process.env.FRONTEND_BASE_URL });
 
   await app.listen(process.env.BACKEND_PORT);
 }
