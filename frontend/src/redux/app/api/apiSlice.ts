@@ -28,7 +28,10 @@ const baseQueryWithReauth: BaseQueryFn<
 
     if (result.error?.status === 401) {
         const refreshResult = await baseQuery(
-            "auth/refresh",
+            {
+                url: "/auth/refresh",
+                method: "POST",
+            },
             api,
             extraOptions
         );
@@ -51,6 +54,7 @@ const baseQueryWithReauth: BaseQueryFn<
 
 export const apiSlice = createApi({
     baseQuery: baseQueryWithReauth,
+    tagTypes: ["Todos"],
     endpoints: (builder) => ({}),
 });
 
