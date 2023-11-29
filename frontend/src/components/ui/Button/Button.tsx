@@ -24,13 +24,13 @@ export interface ButtonProps
     extends React.ButtonHTMLAttributes<HTMLButtonElement>,
         VariantProps<typeof buttonVariants> {}
 
-const Button: React.FC<ButtonProps> = ({
+export default function Button({
     variant,
     size,
     className,
     children,
     ...props
-}) => {
+}: ButtonProps) {
     return (
         <button
             className={twMerge(buttonVariants({ variant, size }), className)}
@@ -39,7 +39,5 @@ const Button: React.FC<ButtonProps> = ({
             {children}
         </button>
     );
-};
-
-export default Button;
+}
 
