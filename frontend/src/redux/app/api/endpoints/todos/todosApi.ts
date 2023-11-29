@@ -26,7 +26,7 @@ const todosApi = apiSlice.injectEndpoints({
                             }
                         }
 
-                        return "/notes?" + params;
+                        return "/todos?" + params;
                     },
                     providesTags: ["Todos"],
                 }
@@ -35,7 +35,7 @@ const todosApi = apiSlice.injectEndpoints({
             createTodo: builder.mutation<Todo, CreateTodoDto>({
                 query(dto) {
                     return {
-                        url: `/notes`,
+                        url: `/todos`,
                         method: "POST",
                         body: dto,
                     };
@@ -49,7 +49,7 @@ const todosApi = apiSlice.injectEndpoints({
             >({
                 query({ id, ...body }) {
                     return {
-                        url: `notes/${id}`,
+                        url: `todos/${id}`,
                         method: "PATCH",
                         body,
                     };
@@ -60,7 +60,7 @@ const todosApi = apiSlice.injectEndpoints({
             deleteTodo: builder.mutation<void, Pick<Todo, "id">>({
                 query({ id }) {
                     return {
-                        url: `notes/${id}`,
+                        url: `todos/${id}`,
                         method: "DELETE",
                     };
                 },
